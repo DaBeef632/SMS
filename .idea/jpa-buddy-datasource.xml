@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpbDataSourceConfig">
+    <data-sources>
+      <data-source id="a94414fb-c7d4-435f-8a57-36065830d16f" name="SMS" url="jdbc:mariadb://localhost/SMS" driverClass="org.mariadb.jdbc.Driver" />
+    </data-sources>
+  </component>
+</project>
