@@ -70,7 +70,7 @@ public class StudentService implements StudentDAO {
             //get the student by email
             Student student = getStudentByEmail(sEmail);
             //if the student is not null and the sPass equals the spassword return true
-            if(student !=null && (student.getSPass().equals(sPassword)) ){
+            if(student !=null && student.getSPass().equals(sPassword) ){
                 return true;
             } else{
                 return false;
