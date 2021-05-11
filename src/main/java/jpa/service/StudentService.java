@@ -64,14 +64,18 @@ public class StudentService implements StudentDAO {
 
     @Override
     public boolean validateStudent(String sEmail, String sPassword) {
+
+
         try{
+            //get the student by email
             Student student = getStudentByEmail(sEmail);
-            if(student.getSPass().equals(sPassword)) {
+            //if the student is not null and the sPass equals the spassword return true
+            if(student !=null && (student.getSPass().equals(sPassword)) ){
                 return true;
             } else{
                 return false;
             }
-        } catch (NullPointerException | IllegalArgumentException e){
+        } catch ( IllegalArgumentException e){
             e.printStackTrace();
             return false;
         }
