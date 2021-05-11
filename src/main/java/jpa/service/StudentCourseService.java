@@ -1,9 +1,6 @@
 package jpa.service;
-
-
 import jpa.entitymodels.StudentCourses;
 import jpa.mainrunner.SMSRunner;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.Query;
@@ -15,7 +12,8 @@ public class StudentCourseService {
 
         EntityManager em = SMSRunner.emf.createEntityManager();
         //creating a studentcourse list to fill by the query
-        List<StudentCourses> sc = null;
+        List<StudentCourses> studCourses;
+        studCourses = null;
 
         try {
             // begins transaction
@@ -25,22 +23,20 @@ public class StudentCourseService {
             // email is the parameter
             query.setParameter("email", email);
             // the empty studentcourse list is set to the result list
-            sc = query.getResultList();
-
-            //close everything
+            studCourses = (List<StudentCourses>) query.getResultList();
             em.getTransaction().commit();
 
-            return sc;
+            return studCourses;
 
-        } catch(IllegalArgumentException | EntityNotFoundException | RollbackException ex){
+        } catch(NullPointerException | IllegalStateException | IllegalArgumentException | EntityNotFoundException | RollbackException e){
 
-            ex.printStackTrace();
+            e.printStackTrace();
 
         } finally {
-            //closes entity manager
+
             em.close();
         }
-        // returns course list
-        return sc;
+        // return student course list
+        return studCourses;
     }
 }

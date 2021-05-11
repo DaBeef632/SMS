@@ -6,14 +6,10 @@ import jpa.entitymodels.Student;
 import jpa.entitymodels.StudentCourses;
 import jpa.mainrunner.SMSRunner;
 import jpa.util.JpaUtil;
-
-
-
 import javax.persistence.*;
 import java.util.List;
 
 public class StudentService implements StudentDAO {
-
 
     @Override
     public List<Student> getAllStudents() {
@@ -60,11 +56,8 @@ public class StudentService implements StudentDAO {
         }
     }
 
-
-
     @Override
     public boolean validateStudent(String sEmail, String sPassword) {
-
 
         try{
             //get the student by email
@@ -79,14 +72,12 @@ public class StudentService implements StudentDAO {
             e.printStackTrace();
             return false;
         }
-
     }
     @Override
     public void registerStudentToCourse(String sEmail, int cId) {
         EntityManager em = SMSRunner.emf.createEntityManager();
         em.getTransaction().begin();
         try {
-
             //find course by id
             Course course = em.find(Course.class, cId);
             //find student by email
@@ -116,20 +107,18 @@ public class StudentService implements StudentDAO {
         List<Course> courses = null;
         try {
             em.getTransaction().begin();
-
+            //created query to select course from students where emails match as the params
             Query query = em.createQuery("select course from Student s where email = :email");
             query.setParameter("email", sEmail);
-            //filling the course list with the query result list
+            //setting the course list with the query result list
             courses = query.getResultList();
             em.close();
             //catching the exceptions
         } catch(IllegalArgumentException | EntityNotFoundException | RollbackException e){
             e.printStackTrace();
-
         }finally {
             em.close();
         }
-
         //returning the course list
         return courses;
     }
