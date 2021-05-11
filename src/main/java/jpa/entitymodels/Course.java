@@ -4,8 +4,10 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Getter @Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level=AccessLevel.PRIVATE)
@@ -22,10 +24,6 @@ public class Course {
     private String cInstructorName;
 
 
-    /*@Override
-    public String toString() {
-        return String.format("%-10s%-20S%-15s", getCId(), getCName(), getCInstructorName());
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -38,6 +36,6 @@ public class Course {
     @Override
     public int hashCode() {
         return Objects.hash(cId, cName, cInstructorName);
-    }*/
+    }
 
 }

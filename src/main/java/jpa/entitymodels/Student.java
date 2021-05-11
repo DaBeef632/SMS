@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Getter @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level=AccessLevel.PRIVATE)
@@ -29,14 +30,6 @@ public class Student {
     private List<Course> sCourses;
 
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "sEmail='" + sEmail + '\'' +
-                ", sName='" + sName + '\'' +
-                ", sPass='" + sPass + '\'' +
-                '}';
-    }
 
 
     @Override
